@@ -1,0 +1,58 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<Layout title="Page Not Found | ROCSAR Payload Experiment">
+  <section class="not-found">
+    <p class="code">404</p>
+    <h1>Page not found</h1>
+    <p class="hint">The page you are looking for does not exist or has been moved.</p>
+    <a href={`${base}/`} class="home-link">Back to the project</a>
+  </section>
+</Layout>
+
+<style>
+  .not-found {
+    text-align: center;
+    padding: 5rem 0;
+  }
+  .code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    color: var(--accent-muted);
+    text-transform: uppercase;
+    margin: 0 0 1rem 0;
+  }
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+  .hint {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 300;
+    margin: 0 0 2rem 0;
+  }
+  .home-link {
+    display: inline-block;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.55rem 1.25rem;
+    border: 1px solid var(--card-border-hover);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .home-link:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--text-secondary);
+  }
+</style>

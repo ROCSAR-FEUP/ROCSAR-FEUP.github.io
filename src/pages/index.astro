@@ -1,0 +1,258 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import Layout from '../layouts/Layout.astro';
+import { ROCSAR_INFO, SPONSORS } from '../data';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+const designPhotos = ROCSAR_INFO.designPhotos.filter(photo =>
+  fs.existsSync(path.join(process.cwd(), "public", photo.url))
+);
+---
+
+<Layout title={`${ROCSAR_INFO.name} | Payload Overview`}>
+  <section class="hero">
+    <div class="badge-wrapper">
+      <span class="badge">REXUS/BEXUS CAMPAIGN</span>
+    </div>
+    <h1 class="sober-title">{ROCSAR_INFO.name}</h1>
+    <h2 class="tagline">{ROCSAR_INFO.tagline}</h2>
+    <p class="description">{ROCSAR_INFO.description}</p>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <h2>Mission Objectives</h2>
+    </div>
+    <div class="grid-3">
+      {ROCSAR_INFO.objectives.map(obj => (
+        <div class="glass-card">
+          <h3>{obj.title}</h3>
+          <p>{obj.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <h2>Flight Campaign Timeline</h2>
+    </div>
+    <div class="timeline">
+      {ROCSAR_INFO.timeline.map(item => (
+        <div class="timeline-item">
+          <div class="timeline-node"></div>
+          <div class="timeline-content">
+            <span class="date">{item.date}</span>
+            <h3>{item.title}</h3>
+            <p>{item.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {designPhotos.length > 0 && (
+    <section class="section">
+      <div class="section-header">
+        <h2>Hardware & Engineering</h2>
+      </div>
+      <div class="grid-3">
+        {designPhotos.map(photo => (
+          <div class="photo-card">
+            <div class="image-wrapper">
+              <img
+                src={`${base}/${photo.url}`}
+                alt={photo.caption}
+                loading="lazy"
+                onerror={`this.onerror=null;this.src='${base}/images/placeholder.svg'`}
+              />
+            </div>
+            <p class="caption">{photo.caption}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="section-header">
+      <h2>Sponsors & Partners</h2>
+    </div>
+    <div class="sponsors-grid">
+      {SPONSORS.map(sponsor => (
+        <div class="sponsor-card">
+          {sponsor.logoUrl ? (
+            <img src={`${base}/${sponsor.logoUrl}`} alt={sponsor.name} class="sponsor-logo" />
+          ) : (
+            <div class="sponsor-placeholder">{sponsor.name}</div>
+          )}
+          <span class="sponsor-type">{sponsor.category}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+  .badge-wrapper {
+    margin-bottom: 1.25rem;
+  }
+  .badge {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--card-border);
+    color: var(--accent-slate);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    font-weight: 500;
+    padding: 0.35rem 0.85rem;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .sober-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+  .tagline {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    font-weight: 400;
+    margin-top: 0;
+    letter-spacing: 0.01em;
+  }
+  .description {
+    color: var(--accent-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 680px;
+    margin: 1.5rem auto 0 auto;
+    font-weight: 300;
+  }
+
+  /* Timeline */
+  .timeline {
+    border-left: 1px solid var(--card-border);
+    padding-left: 1.5rem;
+    margin-left: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .timeline-item { position: relative; }
+  .timeline-node {
+    position: absolute;
+    left: -1.82rem;
+    top: 0.3rem;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent-slate);
+  }
+  .timeline-content h3 {
+    margin: 0.2rem 0 0.4rem 0;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .timeline-content p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  /* Photos */
+  .photo-card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+    transition: border-color 0.2s ease;
+  }
+  .photo-card:hover {
+    border-color: var(--card-border-hover);
+  }
+  .image-wrapper {
+    height: 180px;
+    overflow: hidden;
+    background: #12151d;
+  }
+  .photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(20%);
+    transition: filter 0.3s ease;
+  }
+  .photo-card:hover img {
+    filter: grayscale(0%);
+  }
+  .caption {
+    padding: 0.85rem;
+    margin: 0;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 400;
+    border-top: 1px solid var(--card-border);
+  }
+
+  /* Sponsors Grid */
+  .sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .sponsor-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .sponsor-card:hover {
+    border-color: var(--card-border-hover);
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .sponsor-placeholder {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+  .sponsor-logo {
+    max-height: 40px;
+    max-width: 100%;
+    object-fit: contain;
+    opacity: 0.9;
+    transition: opacity 0.25s ease;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px;
+    border-radius: 4px;
+  }
+  .sponsor-card:hover .sponsor-logo {
+    opacity: 1;
+  }
+  .sponsor-type {
+    font-size: 0.7rem;
+    color: var(--accent-muted);
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+</style>
