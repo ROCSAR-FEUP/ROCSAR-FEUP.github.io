@@ -2,7 +2,9 @@
 
 Official website for **ROCSAR** — a compact 5.8 GHz Synthetic Aperture Radar payload flown aboard BEXUS as part of the ESA [REXUS/BEXUS](https://rexusbexus.net) programme.
 
-Built with [Astro](https://astro.build) and deployed to GitHub Pages at [rocsar-feup.github.io](https://rocsar-feup.github.io).
+Built with [Astro](https://astro.build) and deployed to GitHub Pages at [rocsar-feup.github.io/site](https://rocsar-feup.github.io/site/).
+
+> **Note:** the repo is currently named `site` (base `/site`). Once it is renamed to `ROCSAR-FEUP.github.io`, change `base` in `astro.config.mjs` to `/` (or remove it) and update `public/robots.txt`.
 
 ## Project structure
 
