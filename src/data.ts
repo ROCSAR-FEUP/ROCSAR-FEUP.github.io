@@ -118,7 +118,6 @@ export const SPONSORS = [
   {
     name: "ESA Education",
     category: "Institutional Partner",
-    tier: "Diamond",
     logoUrl: "sponsors/ESA.png"
   },
   {
