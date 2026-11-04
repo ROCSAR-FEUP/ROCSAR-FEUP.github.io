@@ -76,19 +76,51 @@ const designPhotos = ROCSAR_INFO.designPhotos.filter(photo =>
     </section>
   )}
 
-  <section class="section">
+  <section class="section" aria-label="Institutional Partners">
     <div class="section-header">
-      <h2>Sponsors & Partners</h2>
+      <h2>Institutional Partners</h2>
     </div>
     <div class="sponsors-grid">
-      {SPONSORS.map(sponsor => (
+      {SPONSORS.filter(s => s.name === "ESA Education").map(sponsor => (
         <div class="sponsor-card">
           {sponsor.logoUrl ? (
-            <img src={`${base}/${sponsor.logoUrl}`} alt={sponsor.name} class="sponsor-logo" />
+            <img
+              src={`${base}/${sponsor.logoUrl}`}
+              alt={sponsor.name}
+              class="sponsor-logo"
+              loading="lazy"
+            />
           ) : (
             <div class="sponsor-placeholder">{sponsor.name}</div>
           )}
-          <span class="sponsor-type">{sponsor.category}</span>
+          {sponsor.tier ? (
+            <span class="tier">{sponsor.tier}</span>
+          ) : null}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section" aria-label="Sponsors">
+    <div class="section-header">
+      <h2>Sponsors</h2>
+    </div>
+    <div class="sponsors-grid">
+      {SPONSORS.filter(s => s.name !== "ESA Education").map(sponsor => (
+        <div class="sponsor-card">
+          {sponsor.logoUrl ? (
+            <img
+              src={`${base}/${sponsor.logoUrl}`}
+              alt={sponsor.name}
+              class="sponsor-logo"
+              loading="lazy"
+            />
+          ) : (
+            <div class="sponsor-placeholder">{sponsor.name}</div>
+          )}
+          {sponsor.tier ? (
+            <span class="tier">{sponsor.tier}</span>
+          ) : null}
         </div>
       ))}
     </div>
@@ -254,5 +286,13 @@ const designPhotos = ROCSAR_INFO.designPhotos.filter(photo =>
     font-family: 'JetBrains Mono', monospace;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+  }
+  .tier {
+    font-size: 0.65rem;
+    color: var(--accent-slate);
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.25rem;
   }
 </style>

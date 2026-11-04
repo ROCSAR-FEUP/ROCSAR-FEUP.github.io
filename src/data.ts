@@ -118,6 +118,7 @@ export const SPONSORS = [
   {
     name: "ESA Education",
     category: "Institutional Partner",
+    tier: "Diamond",
     logoUrl: "sponsors/ESA.png"
   },
   {
@@ -138,6 +139,7 @@ export const SPONSORS = [
   {
     name: "Geosat",
     category: "Industry Partner",
+    tier: "Diamond",
     logoUrl: "sponsors/geosat.png"
   },
   {
@@ -148,15 +150,16 @@ export const SPONSORS = [
   {
     name: "INEGI",
     category: "Technical Partner",
+    tier: "Bronze",
     logoUrl: "sponsors/INEGI.png"
   }
 ];
 
 export const HISTORY_PROJECTS = [
   {
-    year: "2024 – 2025",
-    name: "STRAPLEX",
-    description: "Stratospheric radar and telemetry payload predecessor developed at DEEC, laying the groundwork for high-frequency compact radar architectures."
+    year: "2025 – 2026",
+    name: "SARIA",
+    description: "[TODO: one-line SARIA mission description]"
   },
   {
     year: "2023 – 2024",
