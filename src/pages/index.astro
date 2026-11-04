@@ -81,7 +81,7 @@ const designPhotos = ROCSAR_INFO.designPhotos.filter(photo =>
       <h2>Institutional Partners</h2>
     </div>
     <div class="sponsors-grid">
-      {SPONSORS.filter(s => s.name === "ESA Education").map(sponsor => (
+      {SPONSORS.filter(s => !(s.name === "GEOSAT" || s.name === "INEGI")).map(sponsor => (
         <div class="sponsor-card">
           {sponsor.logoUrl ? (
             <img
@@ -106,7 +106,7 @@ const designPhotos = ROCSAR_INFO.designPhotos.filter(photo =>
       <h2>Sponsors</h2>
     </div>
     <div class="sponsors-grid">
-      {SPONSORS.filter(s => s.name !== "ESA Education").map(sponsor => (
+      {SPONSORS.filter(s => s.name === "GEOSAT" || s.name === "INEGI").map(sponsor => (
         <div class="sponsor-card">
           {sponsor.logoUrl ? (
             <img

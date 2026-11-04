@@ -40,10 +40,10 @@ export const ROCSAR_INFO = {
     }
   ],
   designPhotos: [
-    { url: "images/gears.jpg", caption: "Rotation Mechanism & Custom Gearbox" },
-    { url: "images/main-box.jpg", caption: "Main Payload Electronics Enclosure" },
-    { url: "images/assembly.jpg", caption: "Final Mechanical & Electrical Assembly" },
-    { url: "images/design-1.jpg", caption: "5.8 GHz Front-End PCB Layout" },
+    { url: "images/gears.jpg", caption: "Custom Gearbox" },
+    { url: "images/mainbox.jpg", caption: "Main Payload Box" },
+    { url: "images/assembly.jpg", caption: "Experiment Assembled on Gondola" },
+    { url: "images/design-1.jpg", caption: "Antennas during flight" },
     { url: "images/design-2.jpg", caption: "RP2040 Telemetry Board" }
   ]
 };
@@ -109,7 +109,7 @@ export const TEAM_MEMBERS = [
     name: "Rafael Caçoete",
     role: "Electronics Engineer",
     bio: "B.Sc. Student in Electrical and Computer Engineering",
-    skills: ["PCB design", "Electronics", "Systems Engineering"],
+    skills: ["PCB design", "Electronics"],
     photoUrl: "images/RafaelCaçoete.jpg"
   }
 ];
@@ -157,7 +157,7 @@ export const SPONSORS = [
 
 export const HISTORY_PROJECTS = [
   {
-    year: "2025 – 2026",
+    year: "2020 – 2022",
     name: "SARIA",
     description: "[TODO: one-line SARIA mission description]"
   },
