@@ -117,37 +117,44 @@ export const TEAM_MEMBERS = [
 export const SPONSORS = [
   {
     name: "ESA Education",
+    group: "partner",
     category: "Institutional Partner",
     logoUrl: "sponsors/ESA.png"
   },
   {
     name: "FEUP",
+    group: "partner",
     category: "Academic Sponsor",
     logoUrl: "sponsors/feup.png"
   },
   {
     name: "Swedish Space Corp",
+    group: "partner",
     category: "Flight Provider",
     logoUrl: "sponsors/SSC_Space.png"
   },
   {
     name: "ZARM",
+    group: "partner",
     category: "Technical Partner",
     logoUrl: "sponsors/Zarm.jpg"
   },
   {
     name: "Geosat",
+    group: "sponsor",
     category: "Industry Partner",
     tier: "Diamond",
     logoUrl: "sponsors/geosat.png"
   },
   {
     name: "DEEC (FEUP)",
+    group: "partner",
     category: "Departmental Support",
     logoUrl: "sponsors/DEEC.jpg"
   },
   {
     name: "INEGI",
+    group: "sponsor",
     category: "Technical Partner",
     tier: "Bronze",
     logoUrl: "sponsors/INEGI.png"
